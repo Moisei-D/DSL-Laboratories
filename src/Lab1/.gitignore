@@ -1,0 +1,17 @@
+﻿# Rider / IDEA
+.idea/
+*.iml
+
+# Build outputs
+bin/
+obj/
+.vs/
+
+# User files
+*.user
+*.suo
+*.userosscache
+*.sln.DotSettings
+
+# OS
+.DS_Store
