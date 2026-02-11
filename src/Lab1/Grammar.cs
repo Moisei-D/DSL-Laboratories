@@ -16,7 +16,7 @@ namespace Lab1
             { 'B', new List<string> { "bC", "aB", "d" } },
             { 'C', new List<string> { "cB" } }
         };
-
+        
         public string GenerateString()
         {
             Random rand = new Random();
@@ -44,7 +44,7 @@ namespace Lab1
             fa.FinalStates.Add("X"); // Special state for terminal productions like B -> d
 
             foreach (var rule in P)
-            {
+            {   
                 foreach (var production in rule.Value)
                 {
                     char symbol = production[0];

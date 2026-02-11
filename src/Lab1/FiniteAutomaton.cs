@@ -14,10 +14,12 @@ namespace Lab1
         {
             string currentState = InitialState;
             foreach (char symbol in inputString)
-            {
+            {   
+                
                 var key = currentState + "|" + symbol;
                 if (!Transitions.ContainsKey(key)) return false;
                 currentState = Transitions[key];
+                
             }
             return FinalStates.Contains(currentState);
         }
