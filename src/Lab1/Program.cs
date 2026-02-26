@@ -43,11 +43,16 @@ namespace Lab1
             Console.WriteLine("\nTesting an invalid string:");
             string invalidTest = "abc"; 
             bool invalidResult = myFA.StringBelongToLanguage(invalidTest);
-            Console.WriteLine($"String: {invalidTest,-18} | Accepted by FA: {invalidResult}");
+            Console.WriteLine($"String: {invalidTest,-18} | Accepted by FA: {invalidResult}\n");
+
+
+            //Check Chomsky classification function
+            Console.WriteLine($"The classifiaction: {myGrammar.ClassifyChomskyHierarchy()}");
 
             // Keep the console window open
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
+
         }
     }
 }

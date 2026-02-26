@@ -58,5 +58,77 @@ namespace Lab1
             }
             return fa;
         }
+
+        public string ClassifyChomskyHierarchy()
+        {
+            bool hasLeftLinear = false;
+            bool hasRightLinear = false;
+            bool isRegular = true;
+            bool isContextSensitive = true;
+
+            foreach (var rule in P)
+            {
+                foreach (var production in rule.Value)
+                {
+                    if (string.IsNullOrEmpty(production))
+                    {
+                        if (rule.Key != S)
+                        {
+                            isContextSensitive = false;
+                        }
+                        continue;
+                    }
+
+                    if (production.Length == 1)
+                    {
+                        if (!Vt.Contains(production[0]))
+                        {
+                            isRegular = false;
+                        }
+                    }
+                    else if (production.Length == 2)
+                    {
+                        bool firstIsTerminal = Vt.Contains(production[0]);
+                        bool secondIsNonTerminal = Vn.Contains(production[1]);
+                        bool firstIsNonTerminal = Vn.Contains(production[0]);
+                        bool secondIsTerminal = Vt.Contains(production[1]);
+
+                        if (firstIsTerminal && secondIsNonTerminal)
+                        {
+                            hasRightLinear = true;
+                        }
+                        else if (firstIsNonTerminal && secondIsTerminal)
+                        {
+                            hasLeftLinear = true;
+                        }
+                        else
+                        {
+                            isRegular = false;
+                        }
+                    }
+                    else
+                    {
+                        isRegular = false;
+                    }
+
+                    if (production.Length < 1)
+                    {
+                        isContextSensitive = false;
+                    }
+                }
+            }
+
+            if (isRegular && !(hasLeftLinear && hasRightLinear))
+            {
+                return "Type-3 (Regular)";
+            }
+
+            if (isContextSensitive)
+            {
+                return "Type-1 (Context-Sensitive)";
+            }
+
+            return "Type-2 (Context-Free)";
+        }
     }
 }
