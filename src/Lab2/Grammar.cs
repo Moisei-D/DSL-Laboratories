@@ -27,16 +27,51 @@ namespace Lab2
             bool hasLeftLinear = false;
             bool hasRightLinear = false;
             bool isRegular = true;
+            bool isContextFree = true;
+            bool isContextSensitive = true;
+            bool isUnrestricted = true;
 
-            foreach (var production in Productions)
+            foreach(var production in Productions)
             {
+                var lhsSymbols = GetLhsSymbols(production.Key);
+                if (lhsSymbols.Count == 0)
+                {
+                    isUnrestricted = false;
+                    isContextSensitive = false;
+                    isContextFree = false;
+                    isRegular = false;
+                    continue;
+                }
+
+                bool lhsIsSingleNonTerminal = lhsSymbols.Count == 1 && NonTerminals.Contains(lhsSymbols[0]);
+                if (!lhsIsSingleNonTerminal)
+                {
+                    isContextFree = false;
+                    isRegular = false;
+                }
+
+                bool lhsHasNonTerminal = lhsSymbols.Any(NonTerminals.Contains);
+
                 foreach (var rhs in production.Value)
                 {
+                    if (!lhsHasNonTerminal)
+                    {
+                        isContextSensitive = false;
+                    }
+
+                    if (rhs.Count < lhsSymbols.Count && !(rhs.Count == 0 && production.Key == StartSymbol))
+                    {
+                        isContextSensitive = false;
+                    }
+
+                    if (!isRegular)
+                    {
+                        continue;
+                    }
                     if (rhs.Count == 0)
                     {
                         continue;
                     }
-
                     if (rhs.Count == 1)
                     {
                         if (!Terminals.Contains(rhs[0]))
@@ -70,13 +105,36 @@ namespace Lab2
                     }
                 }
             }
-
             if (isRegular && !(hasLeftLinear && hasRightLinear))
             {
                 return "Type-3 (Regular)";
             }
 
-            return "Type-2 (Context-Free)";
+            if (isContextFree)
+            {
+                return "Type-2 (Context-Free)";
+            }
+
+            if (isContextSensitive)
+            {
+                return "Type-1 (Context-Sensitive)";
+            }
+
+            return "Type-0 (Unrestricted)";
+        }
+
+        private static IReadOnlyList<string> GetLhsSymbols(string lhs)
+        {
+            if (string.IsNullOrWhiteSpace(lhs))
+            {
+                return Array.Empty<string>();
+            }
+            if (lhs.Contains(' '))
+            {
+                return lhs.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            }
+
+            return new[] { lhs };
         }
     }
 }
