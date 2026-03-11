@@ -11,7 +11,7 @@ namespace Lab3
     {
         // Special Marker tokens
         Illegal,  //Represent a character the lexer can't recognize
-        EOF, //Represent the end of file/input
+        Eof, //Represent the end of file/input
 
         //Identifiers and Literals
         Identifier,   //Names like x, cos, sin
@@ -23,7 +23,7 @@ namespace Lab3
         Plus,       // "+"
         Minus,      // "-"
         Bang,       // "!"
-        Asterick,   // "*"
+        Asterisk,   // "*"
         Slash,      // "/"
         Lt,         // "<"
         Gt,         // ">"
