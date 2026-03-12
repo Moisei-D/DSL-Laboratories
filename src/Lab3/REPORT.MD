@@ -1,7 +1,7 @@
 # Lexer & Scanner
 
 ### Course: Formal Languages & Finite Automata
-### Author: Cretu Dumitru (cudos to Vasile Drumea with Irina Cojuhari)
+### Author: Moisei Daniel
 
 ----
 
