@@ -7,7 +7,7 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            string filePath = "C:\\Users\\mrdan\\source\\repos\\Moisei-D\\DSL-Laboratories\\Lab3\\samples\\demo.txt";
+            string filePath = "C:\\Users\\mrdan\\source\\repos\\Moisei-D\\DSL-Laboratories\\src\\Lab3\\samples\\demo.txt";
             if (!File.Exists(filePath))
             {
                 Console.WriteLine($"Error: Could not find {filePath}");
