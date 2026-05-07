@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexerScanner", "src\LexerSc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegularExpressions", "src\RegularExpressions\RegularExpressions.csproj", "{F542A9F4-27F8-F372-1AB6-CB65E560A4A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserAST", "src\ParserAST\ParserAST.csproj", "{B718C206-B109-4DC6-CFF0-2F68462467DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F542A9F4-27F8-F372-1AB6-CB65E560A4A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F542A9F4-27F8-F372-1AB6-CB65E560A4A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F542A9F4-27F8-F372-1AB6-CB65E560A4A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B718C206-B109-4DC6-CFF0-2F68462467DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B718C206-B109-4DC6-CFF0-2F68462467DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B718C206-B109-4DC6-CFF0-2F68462467DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B718C206-B109-4DC6-CFF0-2F68462467DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

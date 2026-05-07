@@ -51,7 +51,24 @@ namespace CNF
             Console.Write(grammar);
 
             // ── BONUS: accept any user-supplied grammar ───────────────────────────
-            if (args.Length > 0 && args[0] == "--interactive")
+            bool useInteractiveInput = false;
+            foreach (var arg in args)
+            {
+                if (arg == "--interactive")
+                {
+                    useInteractiveInput = true;
+                    break;
+                }
+            }
+
+            if (!useInteractiveInput)
+            {
+                Console.Write("Do you want to enter a custom grammar? (y/n): ");
+                var answer = Console.ReadLine();
+                useInteractiveInput = string.Equals(answer?.Trim(), "y", StringComparison.OrdinalIgnoreCase);
+            }
+
+            if (useInteractiveInput)
             {
                 grammar = ReadGrammarFromUser();
                 Banner("User-supplied Grammar");
